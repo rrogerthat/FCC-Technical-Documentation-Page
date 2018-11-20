@@ -2,8 +2,279 @@
 <html>
 <head>
 	<title>Technical Documentation Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
 </head>
 <body>
+	<nav id="navbar">
+		<header><h1 class="center-align">Javascript Statements & Declarations</h1></header>
+		<ul id="page-links">
+			<a id="break-link" class="nav-link" href="#break-div"><li class="link">break</li ></a>
+			<a id="forin-link" class="nav-link" href="#forin-div"><li class="link">for...in</li></a>
+			<a id="switch-link" class="nav-link" href="#switch-div"><li class="link">switch</li></a>
+			<a id="throw-link" class="nav-link" href="#throw-div"><li class="link">throw</li></a>
+			<a id="trycatch-link" class="nav-link" href="#trycatch-div"><li class="link">try...catch</li></a>
+		</ul>
+	</nav>
+	<main id="main-doc">
+		<div id="break-div"></div>
+		<section class="main-section" id="break">
+			<header><h1 class="toUnderline">break</h1></header>
+			<p>The <span class="bold">break statement</span> terminates the current loop, <code class="code-word">switch</code>, or <code class="code-word">label</code> statement and transfers program control to the statement following the terminated statement.</p>
+			<h3>JavaScript Demo: Statement - Break</h3>
+			<code>
+				<ol class="code-block">
+					<li>var i = 0;</li>
+					<li></li>
+					<li>while (i < 6) {</li>
+					<li>  if (i === 3) {</li>
+					<li>    break;</li>
+					<li>  }</li>
+					<li>  i = i + 1;</li>
+					<li>}</li>
+					<li></li>
+					<li>console.log(i);</li>
+					<li><span class="comment">// expected output: 3</span></li>
+				</ol>
+			</code>
 
+			<h3>Syntax</h3>
+			<code>
+				<ul class="code-block">
+					<li>break [label];</li>
+				</ul>
+			</code>
+
+			<h4><code class="code-word">label</code></h4>
+			<p class="tab-indent">Optional. Identifier associated with the label of the statement. If the statement is not a loop or <code class="code-word">switch</code>, this is required.</p>
+
+			<h3>Description</h3>
+			<p>The <code class="code-word">break</code> statement includes an optional label that allows the program to break out of a labeled statement. The <code class="code-word">break</code> statement needs to be nested within the referenced label. The labeled statement can be any <code class="code-word">block</code> statement; it does not have to be preceded by a loop statement.</p>
+			<p>A <code class="code-word">break</code> statement, with or without a following label, cannot be used within the body of a function that is itself nested within the current loop, switch, or label statement that the <code class="code-word">break</code> statement is intended to break out of.</p>
+		</section>
+		<div class="separator"></div>
+		
+		<div id="forin-div"></div>
+		<section class="main-section" id="for...in">
+			<header><h1 class="toUnderline">for...in</h1></header>
+			<p>The <code class="code-word">for...in</code> statement iterates over all non-Symbol, enumerable properties of an object.</p>
+			<h3>JavaScript Demo: Statement - For...In</h3>
+			<code>
+				<ol class="code-block">
+					<li>var string1 = "";</li>
+					<li>var object1 = {a: 1, b: 2, c: 3};</li>
+					<li></li>
+					<li>for (var property1 in object1) {</li>
+					<li>  string1 += object1[property1];</li>
+					<li>}</li>
+					<li></li>
+					<li>console.log(string1);</li>
+					<li><span class="comment">// expected output: "123"</span></li>
+				</ol>
+			</code>
+
+			<h3>Syntax</h3>
+			<code>
+				<ul class="code-block">
+					<li>for (variable in object) { ...</li>
+					<li>}</li>
+				</ul>
+			</code>
+
+			<h4><code class="code-word">variable</code></h4>
+			<p class="tab-indent">A different property name is assigned to variable on each iteration.</p>
+
+			<h4><code class="code-word">object</code></h4>
+			<p class="tab-indent">Object whose non-Symbol enumerable properties are iterated over.</p>
+
+			<h3>Description</h3>
+			<p>A <code class="code-word">for...in</code> loop only iterates over enumerable, non-Symbol properties. Objects created from built–in constructors like <code class="code-word">Array</code> and <code class="code-word">Object</code> have inherited non–enumerable properties from <code class="code-word">Object.prototype</code> and <code class="code-word">String.prototype</code>, such as <code class="code-word">String</code>'s <code class="code-word">indexOf()</code> method or <code class="code-word">Object</code>'s <code class="code-word">toString()</code> method. The loop will iterate over all enumerable properties of the object itself and those the object inherits from its constructor's prototype (properties closer to the object in the prototype chain override prototypes' properties).</p>
+
+		</section>
+		<div class="separator"></div>
+
+		<div id="switch-div"></div>
+		<section class="main-section" id="switch">
+			<header><h1 class="toUnderline">switch</h1></header>
+			<p>The <code class="code-word">switch</code> <span class="bold">statement</span> evaluates an expression, matching the expression's value to a <code class="code-word">case</code> clause, and executes statements associated with that case, as well as statements in cases that follow the matching case.</p>
+
+			<h3>JavaScript Demo: Statement - Switch</h3>
+			<code>
+				<ol class="code-block">
+					<li>var expr = 'Papayas';</li>
+					<li>switch (expr) {</li>
+					<li>  case 'Oranges':</li>
+					<li>    console.log('Oranges are $0.59 a pound.');</li>
+					<li>    break;</li>
+					<li>  case 'Mangoes':</li>
+					<li>  case 'Papayas':</li>
+					<li>    console.log('Mangoes and papayas are $2.79 a pound.');</li>
+					<li>    <span class="comment">// expected output: "Mangoes and papayas are $2.79 a pound."</span></li>
+					<li>    break;</li>
+					<li>  default:</li>
+					<li>    console.log('Sorry, we are out of ' + expr + '.');</li>
+					<li>}</li>
+				</ol>
+			</code>
+				
+				<h3>Syntax</h3>
+				<code>
+					<ol class="code-block">
+						<li>switch (expression) {</li>
+						<li>  case value1:</li>
+						<li>    <span class="comment">//Statements executed when the</span></li>
+						<li>    <span class="comment">//result of expression matches value1</span></li>
+						<li>    [break;]</li>
+						<li>  case value2:</li>
+						<li>    <span class="comment">//Statements executed when the</span></li>
+						<li>    <span class="comment">//result of expression matches value2</span></li>
+						<li>    [break;]</li>
+						<li>  ...</li>
+						<li>  case valueN:</li>
+						<li>    <span class="comment">//Statements executed when the</span></li>
+						<li>    <span class="comment">//result of expression matches valueN</span></li>
+						<li>    [break;]</li>
+						<li>  [default:</li>
+						<li>    <span class="comment">//Statements executed when none of</span></li>
+						<li>    <span class="comment">//the values match the value of the expression</span></li>
+						<li>    [break;]]</li>
+						<li>}	</li>				
+					</ol>
+			</code>
+
+			<h4><code class="code-word">expression</code></h4>
+			<p class="tab-indent">An expression whose result is matched against each case clause.</p>
+
+			<h4><code class="code-word">case valueN</code> optional</h4>
+			<p class="tab-indent">A <code class="code-word">case</code> clause used to match against <code class="code-word">expression</code>. If the <code class="code-word">expression</code> matches the specified <code class="code-word">valueN</code>, the statements inside the case clause are executed until either the end of the <code class="code-word">switch</code> statement or a <code class="code-word">break</code>.</p>
+
+			<h4><code class="code-word">default</code> optional</h4>
+			<p class="tab-indent">A <code class="code-word">default</code> clause; if provided, this clause is executed if the value of <code class="code-word">expression</code> doesn't match any of the <code class="code-word">case</code> clauses.</p>
+
+			<h3>Description</h3>
+			<p>A switch statement first evaluates its expression. It then looks for the first <code class="code-word">case</code> clause whose expression evaluates to the same value as the result of the input expression (using the strict comparison, <code class="code-word">===</code>) and transfers control to that clause, executing the associated statements. (If multiple cases match the provided value, the first case that matches is selected, even if the cases are not equal to each other.)</p>
+
+		</section>
+		<div class="separator"></div>
+		
+		<div id="throw-div"></div>
+		<section class="main-section" id="throw">
+			<header><h1 class="toUnderline">throw</h1></header>
+			<p>The <code class="code-word">throw</code> <span class="bold">statement</span> throws a user-defined exception. Execution of the current function will stop (the statements after <code class="code-word">throw</code> won't be executed), and control will be passed to the first <code class="code-word">catch</code> block in the call stack. If no <code class="code-word">catch</code> block exists among caller functions, the program will terminate.</p>
+
+			<h3>JavaScript Demo: Statement - Throw</h3>
+			<code>
+				<ol class="code-block">
+					<li>function getRectArea(width, height) {</li>
+					<li>  if (isNaN(width) || isNaN(height)) {</li>
+					<li>    throw "Parameter is not a number!";</li>
+					<li>  }</li>
+					<li>}</li>
+					<li></li>
+					<li>try {</li>
+					<li>  getRectArea(3, 'A');</li>
+					<li>}</li>
+					<li>catch(e) {</li>
+					<li>  console.log(e);</li>
+					<li>  <span class="comment">// expected output: "Parameter is not a number!"</span></li>
+					<li>}</li>
+				</ol>
+			</code>
+			
+			<h3>Syntax</h3>
+			<code>
+				<ul class="code-block">
+					<li>throw <span class="italic">expression</span>;</li>
+				</ul>
+			</code>	
+
+			<h4><code class="code-word">expression</code></h4>
+			<p class="tab-indent">The expression to throw.</p>		
+
+			<h3>Description</h3>
+			<p>Use the <code class="code-word">throw</code> statement to throw an exception. When you throw an exception, <code class="code-word">expression</code> specifies the value of the exception. Each of the following throws an exception:</p>
+			<code>
+				<ol class="code-block">
+					<li>throw 'Error2'; <span class="comment">// generates an exception with a string value</span></li>
+					<li>throw 42;       <span class="comment">// generates an exception with the value 42</span></li>
+					<li>throw true;     <span class="comment">// generates an exception with the value true</span></li>
+					<li>throw new Error('Required');  <span class="comment">// generates an error object with the message of Required</span></li>
+				</ol>
+			</code>
+		</section>
+		<div class="separator"></div>
+		
+		<div id="trycatch-div"></div>
+		<section class="main-section" id="try...catch">
+			<header><h1 class="toUnderline">try...catch</h1></header>
+			<p>The <code class="code-word">try...catch</code> statement marks a block of statements to try, and specifies a response, should an exception be thrown.</p>
+
+			<h3>JavaScript Demo: Statement - Try...Catch</h3>
+			<code>
+				<ol class="code-block">
+					<li>try {</li>
+					<li>  eval('alert("Hello world)');</li>
+					<li>}</li>
+					<li>catch(error) {</li>
+					<li>  console.error(error);</li>
+					<li>  <span class="comment">// expected output: SyntaxError: unterminated string literal</span></li>
+					<li>  <span class="comment">// Note - error messages will vary depending on browser</span></li>
+					<li>}</li>
+				</ol>
+			</code>
+
+			<h3>Syntax</h3>
+			<code>
+				<ol class="code-block">
+					<li>try {</li>
+					<li>   try_statements</li>
+					<li>}</li>
+					<li>[catch (exception_var_1 if condition_1) { <span class="comment">// non-standard</span></li>
+					<li>   catch_statements_1</li>
+					<li>}]</li>
+					<li>...</li>
+					<li>[catch (exception_var_2) {</li>
+					<li>   catch_statements_2</li>
+					<li>}]</li>
+					<li>[finally {</li>
+					<li>   finally_statements</li>
+					<li>}]</li>
+				</ol>
+			</code>
+
+			<h4><code class="code-word">try_statements</code></h4>
+			<p class="tab-indent">The statements to be executed.</p>
+			<h4><code class="code-word">catch_statements_1, catch_statements_2</code></h4>
+			<p class="tab-indent">Statements that are executed if an exception is thrown in the <code class="code-word">try</code> block.</p>
+			<h4><code class="code-word">exception_var_1, exception_var_2</code></h4>
+			<p class="tab-indent">An identifier to hold an exception object for the associated <code class="code-word">catch</code> clause.</p>
+			<h4><code class="code-word">condition_1</code></h4>
+			<p class="tab-indent">A conditional expression.</p>
+			<h4><code class="code-word">finally_statements</code></h4>
+			<p class="tab-indent">Statements that are executed after the <code class="code-word">try</code> statement completes. These statements execute regardless of whether an exception was thrown or caught.</p>
+
+			<h3>Description</h3>
+			<p>The <code class="code-word">try</code> statement consists of a <code class="code-word">try</code> block, which contains one or more statements. <code class="code-word">{}</code> must always be used, also for single statements. At least one <code class="code-word">catch</code> clause, or a <code class="code-word">finally</code> clause, must be present. This gives us three forms for the <code class="code-word">try</code> statement:</p>
+
+			<ol>
+				<li class="tab-indent each-form first-child"><code class="code-word">try...catch</code></li>
+				<li class="tab-indent each-form"><code class="code-word">try...finally</code></li>
+				<li class="tab-indent each-form"><code class="code-word">try...catch...finally</code></li>
+			</ol>
+		</section>
+		<div class="separator"></div>
+	</main>
+	
+	<footer>
+		<p>All documentation on this page provided by <a href="https://developer.mozilla.org/en-US/" target="blank">MDN</a></p>
+		<p>© 2018</p>
+	</footer>
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous">
+	</script>
+	<script src="index.js"></script>
 </body>
 </html>
